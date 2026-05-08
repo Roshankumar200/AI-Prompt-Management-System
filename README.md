@@ -1,161 +1,215 @@
-AI Prompt Management System using Flask, MongoDB & Groq API
+# 🚀 AI Prompt Management System
 
-Overview
-
-AI Prompt Management System is a backend AI integration project built using Python Flask, MongoDB, and Groq API.
-
-The system accepts user questions through REST APIs, fetches prompt templates from MongoDB, dynamically replaces placeholders, sends prompts to AI models, stores request-response history, and returns AI-generated responses.
+Backend AI integration project built using **Python Flask**, **MongoDB**, and **Groq API**.
 
 ---
 
-Features
+# 📌 Overview
 
-- Flask REST APIs
-- MongoDB integration
-- Dynamic prompt template management
-- Groq AI model integration
-- Request/response history storage
-- Asynchronous batch processing
-- Postman API testing support
+AI Prompt Management System is a REST API based backend project that:
 
----
-
-Tech Stack
-
-- Python
-- Flask
-- MongoDB
-- PyMongo
-- Groq API
+* Accepts user questions through APIs
+* Fetches prompt templates from MongoDB
+* Dynamically replaces placeholders
+* Sends prompts to Groq AI models
+* Stores request/response history
+* Returns AI-generated responses
+* Supports asynchronous batch processing
 
 ---
 
-Project Structure
+# ✨ Features
 
-AI Prompt Management System
+* ✅ Flask REST APIs
+* ✅ MongoDB Integration
+* ✅ Dynamic Prompt Templates
+* ✅ Groq AI Integration
+* ✅ Request/Response History Storage
+* ✅ Async Batch Processing
+* ✅ Postman API Testing
+
+---
+
+# 🛠️ Tech Stack
+
+| Technology | Usage                |
+| ---------- | -------------------- |
+| Python     | Backend Language     |
+| Flask      | REST API Framework   |
+| MongoDB    | Database             |
+| PyMongo    | MongoDB Connector    |
+| Groq API   | AI Model Integration |
+| Asyncio    | Async Processing     |
+
+---
+
+# 📁 Project Structure
+
+```bash
+AI-Prompt-Management-System/
 │
-├── .venv
-├── .env
 ├── app.py
 ├── requirements.txt
 ├── README.md
+├── .gitignore
+└── .env
+```
 
 ---
 
-Setup Instructions
+# ⚙️ Setup Instructions
 
-1. Clone Repository
+## 1️⃣ Clone Repository
 
-git clone <https://github.com/Roshankumar200/AI-Prompt-Management-System>
+```bash
+git clone https://github.com/Roshankumar200/AI-Prompt-Management-System.git
+
 cd AI-Prompt-Management-System
+```
 
 ---
 
-2. Create Virtual Environment
+## 2️⃣ Create Virtual Environment
 
+```bash
 python -m venv .venv
+```
 
-Activate virtual environment:
+### Activate Virtual Environment
 
-Windows
+### Windows
 
+```bash
 source .venv/Scripts/activate
+```
 
-Linux / Mac
+### Linux / Mac
 
+```bash
 source .venv/bin/activate
+```
 
 ---
 
-3. Install Dependencies
+## 3️⃣ Install Dependencies
 
+```bash
 pip install -r requirements.txt
+```
 
 ---
 
-MongoDB Configuration
+# 🍃 MongoDB Configuration
 
 Make sure MongoDB server is running locally.
 
-Update MongoDB connection inside "app.py":
+Update MongoDB connection inside `app.py`:
 
+```python
 client = MongoClient(
     host="localhost",
     port=27017,
-    username="admin",
-    password="your_password",
+    username=os.getenv("MONGO_USER"),
+    password=os.getenv("MONGO_PASSWORD"),
     authSource="admin"
 )
+```
 
 ---
 
-Environment Variables
+# 🔐 Environment Variables
 
-Create ".env" file and add:
+Create a `.env` file:
 
+```env
 GROQ_API_KEY=your_groq_api_key
+
 GROQ_MODEL=llama-3.1-8b-instant
 
+MONGO_USER=your_mongodb_username
+
+MONGO_PASSWORD=your_mongodb_password
+```
+
 ---
 
-Run Project
+# ▶️ Run Project
 
+```bash
 python app.py
+```
 
-Server will start at:
+Server starts at:
 
+```bash
 http://127.0.0.1:5000
+```
 
 ---
 
-Browser Testing
+# 🌐 Browser Testing
 
-Seed Prompt Template
+## Seed Prompt Template
 
-Open browser:
+Open in browser:
 
+```bash
 http://127.0.0.1:5000/seed
+```
 
 ---
 
-Test AI Response
+## Test AI Response
 
-Open browser:
+Open in browser:
 
+```bash
 http://127.0.0.1:5000/test
+```
 
 ---
 
-API Testing using Postman
+# 📮 API Testing Using Postman
 
-Single Question API
+---
 
-Endpoint
+# 🔹 Single Question API
 
+## Endpoint
+
+```http
 POST http://127.0.0.1:5000/ask
+```
 
-Request Body
+## Request Body
 
+```json
 {
-  "userInput": "What is Artificial Intelligence?"
+  "userInput": "What is DBMS?"
 }
+```
 
-Response
+## Response
 
+```json
 {
-  "response": "Artificial Intelligence is..."
+  "response": "DBMS is..."
 }
+```
 
 ---
 
-Batch API
+# 🔹 Batch API
 
-Endpoint
+## Endpoint
 
+```http
 POST http://127.0.0.1:5000/ask-batch
+```
 
-Request Body
+## Request Body
 
+```json
 {
   "userInputs": [
     "What is AI?",
@@ -163,17 +217,15 @@ Request Body
     "What is Python?"
   ]
 }
+```
 
 ---
 
-Database Collections
+# 🗂️ Database Collections
 
-prompts
-
-Stores AI prompt templates.
-
-history
-
-Stores request and response history.
+| Collection | Description                         |
+| ---------- | ----------------------------------- |
+| prompts    | Stores AI prompt templates          |
+| history    | Stores request and response history |
 
 ---
